@@ -10,6 +10,22 @@
 </p>
 
 ---
+<p align="center">
+  <sup>Kindly supported by:</sup><br>
+<a href="https://terminaltrove.com/?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
+  <img src="https://i.ibb.co/8jrrcZ0/IMG-7210.jpg" width="300" alt="Terminal Trove">
+  <br>
+  <strong>The $HOME of all things in the terminal.</strong>
+</a>
+<br>
+<a href="https://terminaltrove.com/newsletter?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
+  <sub>Find your next CLI / TUI tool and more at Terminal Trove,</sub>
+  <br>
+  <sup>Get updates on new tools on our newsletter.</sup>
+</a>
+</p>
+
+---
 
 #### Contents
 
@@ -823,10 +839,12 @@ Key | Value
 
 Key | Value
 ---|---
-`CHROME_PATH` | The path the Chromium executable (e.g. `/usr/bin/chromium`)
 `PORT` | Port to serve the API, when running server.js (e.g. `3000`)
-`DISABLE_GUI` | Disable the GUI, and only serve the API (e.g. `false`)
+`API_ENABLE_RATE_LIMIT` | Enable rate-limiting for the /api endpoints (e.g. `true`)
 `API_TIMEOUT_LIMIT` | The timeout limit for API requests, in milliseconds (e.g. `10000`)
+`API_CORS_ORIGIN` | Enable CORS, by setting your allowed hostname(s) here (e.g. `example.com`)
+`CHROME_PATH` | The path the Chromium executable (e.g. `/usr/bin/chromium`)
+`DISABLE_GUI` | Disable the GUI, and only serve the API (e.g. `false`)
 `REACT_APP_API_ENDPOINT` | The endpoint for the API, either local or remote (e.g. `/api`)
 
 All values are optional.
