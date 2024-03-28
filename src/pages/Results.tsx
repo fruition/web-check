@@ -1101,7 +1101,7 @@ const Results = (): JSX.Element => {
                 result &&
                 !result.error;
               return show ? (
-                <ErrorBoundary title={title}>
+                <ErrorBoundary title={title} key={`eb-${index}`}>
                   <Component
                     key={`${title}-${index}`}
                     data={{ ...result }}

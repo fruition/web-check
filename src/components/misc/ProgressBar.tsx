@@ -223,6 +223,72 @@ const jobNames = [
   "carbon",
 ] as const;
 
+interface JobListItemProps {
+  job: LoadingJob;
+  showJobDocs: (name: string) => void;
+  showErrorModal: (
+    name: string,
+    state: LoadingState,
+    timeTaken: number | undefined,
+    error: string,
+    isInfo?: boolean
+  ) => void;
+  barColors: Record<LoadingState, [string, string]>;
+}
+
+const getStatusEmoji = (state: LoadingState): string => {
+  switch (state) {
+    case "success":
+      return "✅";
+    case "loading":
+      return "🔄";
+    case "error":
+      return "❌";
+    case "timed-out":
+      return "⏸️";
+    case "skipped":
+      return "⏭️";
+    default:
+      return "❓";
+  }
+};
+
+const JobListItem: React.FC<JobListItemProps> = ({
+  job,
+  showJobDocs,
+  showErrorModal,
+  barColors,
+}) => {
+  const { name, state, timeTaken, retry, error } = job;
+  const actionButton =
+    retry && state !== "success" && state !== "loading" ? (
+      <FailedJobActionButton onClick={retry}>↻ Retry</FailedJobActionButton>
+    ) : null;
+
+  const showModalButton = error &&
+    ["error", "timed-out", "skipped"].includes(state) && (
+      <FailedJobActionButton
+        onClick={() =>
+          showErrorModal(name, state, timeTaken, error, state === "skipped")
+        }
+      >
+        {state === "timed-out" ? "■ Show Timeout Reason" : "■ Show Error"}
+      </FailedJobActionButton>
+    );
+
+  return (
+    <li key={name}>
+      <b onClick={() => showJobDocs(name)}>
+        {getStatusEmoji(state)} {name}
+      </b>
+      <span style={{ color: barColors[state][0] }}> ({state})</span>.
+      <i>{timeTaken && state !== "loading" ? ` Took ${timeTaken} ms` : ""}</i>
+      {actionButton}
+      {showModalButton}
+    </li>
+  );
+};
+
 export const initialJobs = jobNames.map((job: string) => {
   return {
     name: job,
@@ -242,6 +308,7 @@ export const calculateLoadingStatePercentages = (
     loading: 0,
     skipped: 0,
     error: 0,
+    skipped: 0,
     "timed-out": 0,
   };
 
@@ -254,9 +321,9 @@ export const calculateLoadingStatePercentages = (
   const statePercentage: Record<LoadingState, number> = {
     success: (stateCount["success"] / totalJobs) * 100,
     loading: (stateCount["loading"] / totalJobs) * 100,
-    skipped: (stateCount["skipped"] / totalJobs) * 100,
-    error: (stateCount["error"] / totalJobs) * 100,
     "timed-out": (stateCount["timed-out"] / totalJobs) * 100,
+    error: (stateCount["error"] / totalJobs) * 100,
+    skipped: (stateCount["skipped"] / totalJobs) * 100,
   };
 
   return statePercentage;

@@ -157,7 +157,7 @@ export const ExpandableRow = (props: RowProps) => {
           {rowList?.map((row: RowProps, index: number) => {
             return (
               <SubRow key={`${row.lbl}-${index}`}>
-                <span className="lbl" title={row.title}>
+                <span className="lbl" title={row.title?.toString()}>
                   {row.lbl}
                 </span>
                 <span
@@ -214,7 +214,7 @@ const Row = (props: RowProps) => {
   return (
     <StyledRow key={`${lbl}-${val}`}>
       {lbl && (
-        <span className="lbl" title={title}>
+        <span className="lbl" title={title?.toString()}>
           {lbl}
         </span>
       )}
