@@ -35,7 +35,7 @@ const FancyBackground = (): JSX.Element => {
     this.popPerBirth = 1;
     this.maxPop = 300;
     this.birthFreq = 2;
-    this.bgColor = "#141d2b";
+    this.bgColor = "#ffffff";
 
     var canvas = document.createElement("canvas");
     canvas.width = window.innerWidth;

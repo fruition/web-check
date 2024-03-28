@@ -15,7 +15,7 @@ code {
     monospace;
 }
 #fancy-background {
-  color: var(--background, #141d2b);
+  color: var(--background, #ffffff);
 }
 
 ::selection {
