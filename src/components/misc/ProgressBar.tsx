@@ -48,16 +48,6 @@ const Details = styled.details`
     font-weight: bold;
     cursor: pointer;
   }
-  summary:before {
-    content: "►";
-    position: absolute;
-    margin-left: -1rem;
-    color: ${colors.primary};
-    cursor: pointer;
-  }
-  &[open] summary:before {
-    content: "▼";
-  }
   ul {
     list-style: none;
     padding: 0.25rem;
