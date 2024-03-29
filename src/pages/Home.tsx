@@ -1,17 +1,17 @@
-import styled from 'styled-components';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useNavigate, NavigateOptions } from 'react-router-dom';
+import styled from "styled-components";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate, NavigateOptions } from "react-router-dom";
 
-import Heading from 'components/Form/Heading';
-import Input from 'components/Form/Input'
-import Button from 'components/Form/Button';
-import { StyledCard } from 'components/Form/Card';
-import Footer from 'components/misc/Footer';
-import FancyBackground from 'components/misc/FancyBackground';
+import Heading from "components/Form/Heading";
+import Input from "components/Form/Input";
+import Button from "components/Form/Button";
+import { StyledCard } from "components/Form/Card";
+import Footer from "components/misc/Footer";
+import FancyBackground from "components/misc/FancyBackground";
 
-import docs from 'utils/docs';
-import colors from 'styles/colors';
-import { determineAddressType } from 'utils/address-type-checker';
+import docs from "utils/docs";
+import colors from "styles/colors";
+import { determineAddressType } from "utils/address-type-checker";
 
 const HomeContainer = styled.section`
   display: flex;
@@ -19,7 +19,6 @@ const HomeContainer = styled.section`
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-family: 'PTMono';
   padding: 1.5rem 1rem 4rem 1rem;
   footer {
     z-index: 1;
@@ -28,7 +27,6 @@ const HomeContainer = styled.section`
 
 const UserInputMain = styled.form`
   background: ${colors.backgroundLighter};
-  box-shadow: 4px 4px 0px ${colors.bgShadowColor};
   border-radius: 8px;
   padding: 1rem;
   z-index: 5;
@@ -37,57 +35,6 @@ const UserInputMain = styled.form`
   max-width: 60rem;
   z-index: 2;
 `;
-
-const SponsorCard = styled.div`
-  background: ${colors.backgroundLighter};
-  box-shadow: 4px 4px 0px ${colors.bgShadowColor};
-  border-radius: 8px;
-  padding: 1rem;
-  z-index: 5;
-  margin: 1rem;
-  width: calc(100% - 2rem);
-  max-width: 60rem;
-  z-index: 2;
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    p {
-      margin: 0.25rem 0;
-    }
-  }
-  a {
-    color: ${colors.textColor};
-  }
-  img {
-    border-radius: 0.25rem;
-    box-shadow: 2px 2px 0px ${colors.fgShadowColor};
-    transition: box-shadow 0.2s;
-    margin: 0 auto;
-    display: block;
-    width: 200px;
-    &:hover {
-      box-shadow: 4px 4px 0px ${colors.fgShadowColor};
-    }
-    &:active {
-      box-shadow: -2px -2px 0px ${colors.fgShadowColor};
-    }
-  }
-  .cta {
-    font-size: 0.78rem;
-    a { color: ${colors.primary}; }
-  }
-`;
-
-// const FindIpButton = styled.a`
-//   margin: 0.5rem;
-//   cursor: pointer;
-//   display: block;
-//   text-align: center;
-//   color: ${colors.primary};
-//   text-decoration: underline;
-// `;
 
 const ErrorMessage = styled.p`
   color: ${colors.danger};
@@ -109,7 +56,7 @@ const SiteFeaturesWrapper = styled(StyledCard)`
         width: calc(100% - 2rem);
       }
     }
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       flex-wrap: wrap;
     }
   }
@@ -126,7 +73,7 @@ const SiteFeaturesWrapper = styled(StyledCard)`
       break-inside: avoid-column;
     }
     li:before {
-      content: '✓';
+      content: "✓";
       color: ${colors.primary};
       margin-right: 0.5rem;
     }
@@ -137,9 +84,9 @@ const SiteFeaturesWrapper = styled(StyledCard)`
 `;
 
 const Home = (): JSX.Element => {
-  const defaultPlaceholder = 'e.g. https://duck.com/';
-  const [userInput, setUserInput] = useState('');
-  const [errorMsg, setErrMsg] = useState('');
+  const defaultPlaceholder = "e.g. https://duck.com/";
+  const [userInput, setUserInput] = useState("");
+  const [errorMsg, setErrMsg] = useState("");
   const [placeholder] = useState(defaultPlaceholder);
   const [inputDisabled] = useState(false);
   const navigate = useNavigate();
@@ -148,50 +95,36 @@ const Home = (): JSX.Element => {
   const submit = () => {
     let address = userInput.endsWith("/") ? userInput.slice(0, -1) : userInput;
     const addressType = determineAddressType(address);
-  
-    if (addressType === 'empt') {
-      setErrMsg('Field must not be empty');
-    } else if (addressType === 'err') {
-      setErrMsg('Must be a valid URL, IPv4 or IPv6 Address');
+
+    if (addressType === "empt") {
+      setErrMsg("Field must not be empty");
+    } else if (addressType === "err") {
+      setErrMsg("Must be a valid URL, IPv4 or IPv6 Address");
     } else {
       // if the addressType is 'url' and address doesn't start with 'http://' or 'https://', prepend 'https://'
-      if (addressType === 'url' && !/^https?:\/\//i.test(address)) {
-        address = 'https://' + address;
+      if (addressType === "url" && !/^https?:\/\//i.test(address)) {
+        address = "https://" + address;
       }
-      const resultRouteParams: NavigateOptions = { state: { address, addressType } };
+      const resultRouteParams: NavigateOptions = {
+        state: { address, addressType },
+      };
       navigate(`/results/${encodeURIComponent(address)}`, resultRouteParams);
     }
   };
-  
 
   /* Update user input state, and hide error message if field is valid */
   const inputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value);
-    const isError = ['err', 'empt'].includes(determineAddressType(event.target.value));
-    if (!isError) setErrMsg('');
+    const isError = ["err", "empt"].includes(
+      determineAddressType(event.target.value)
+    );
+    if (!isError) setErrMsg("");
   };
-
-  // const findIpAddress = () => {
-  //   setUserInput('');
-  //   setPlaceholder('Looking up your IP...');
-  //   setInputDisabled(true);
-  //   fetch('https://ipapi.co/json/')
-  //     .then(function(response) {
-  //       response.json().then(jsonData => {
-  //         setUserInput(jsonData.ip);
-  //         setPlaceholder(defaultPlaceholder);
-  //         setInputDisabled(true);
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       console.log('Failed to get IP address :\'(', error)
-  //     });
-  // };
 
   const formSubmitEvent = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submit();
-  }
+  };
 
   return (
     <HomeContainer>
@@ -212,47 +145,40 @@ const Home = (): JSX.Element => {
           handleChange={inputChange}
         />
         {/* <FindIpButton onClick={findIpAddress}>Or, find my IP</FindIpButton> */}
-        { errorMsg && <ErrorMessage>{errorMsg}</ErrorMessage>}
-        <Button styles="width: calc(100% - 1rem);" size="large" onClick={submit}>Analyze!</Button>
+        {errorMsg && <ErrorMessage>{errorMsg}</ErrorMessage>}
+        <Button
+          styles="width: calc(100% - 1rem);"
+          size="large"
+          onClick={submit}
+        >
+          Analyze!
+        </Button>
       </UserInputMain>
-      <SponsorCard>
-        <Heading as="h2" size="small" color={colors.primary}>Sponsored by</Heading>
-        <div className="inner">
-          <p>
-            <a href="https://terminaltrove.com/?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
-              Terminal Trove
-            </a> - The $HOME of all things in the terminal.
-            <br />
-            <span className="cta">
-              Get updates on the latest CLI/TUI tools via
-              the <a className="cta" href="https://terminaltrove.com/newsletter?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
-                Terminal Trove newsletter
-              </a>
-            </span>
-            
-          </p>
-          <a href="https://terminaltrove.com/?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
-            <img width="120" alt="Terminal Trove" src="https://i.ibb.co/NKtYjJ1/terminal-trove-web-check.png" />
-          </a>
-        </div>
-
-      </SponsorCard>
       <SiteFeaturesWrapper>
         <div className="features">
-          <Heading as="h2" size="small" color={colors.primary}>Supported Checks</Heading>
+          <Heading as="h2" size="small" color={colors.primary}>
+            Supported Checks
+          </Heading>
           <ul>
-            {docs.map((doc, index) => (<li key={index}>{doc.title}</li>))}
-            <li><a href="/about">+ more!</a></li>
+            {docs.map((doc, index) => (
+              <li key={index}>{doc.title}</li>
+            ))}
+            <li>
+              <a href="/about">+ more!</a>
+            </li>
           </ul>
         </div>
         <div className="links">
-          <a href="https://github.com/lissy93/web-check" title="Check out the source code and documentation on GitHub, and get support or contribute">
-            <Button>View on GitHub</Button>
-          </a>
-          <a href="https://app.netlify.com/start/deploy?repository=https://github.com/lissy93/web-check" title="Deploy your own private or public instance of Web-Check to Netlify">
+          <a
+            href="https://app.netlify.com/start/deploy?repository=https://github.com/lissy93/web-check"
+            title="Deploy your own private or public instance of Web-Check to Netlify"
+          >
             <Button>Deploy your own</Button>
           </a>
-          <a href="/about#api-documentation" title="View the API documentation, to use Web-Check programmatically">
+          <a
+            href="/about#api-documentation"
+            title="View the API documentation, to use Web-Check programmatically"
+          >
             <Button>API Docs</Button>
           </a>
         </div>
@@ -260,6 +186,6 @@ const Home = (): JSX.Element => {
       <Footer isFixed={true} />
     </HomeContainer>
   );
-}
+};
 
 export default Home;
