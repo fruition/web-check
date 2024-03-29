@@ -36,50 +36,6 @@ const UserInputMain = styled.form`
   z-index: 2;
 `;
 
-const SponsorCard = styled.div`
-  background: ${colors.backgroundLighter};
-  border-radius: 8px;
-  padding: 1rem;
-  z-index: 5;
-  margin: 1rem;
-  width: calc(100% - 2rem);
-  max-width: 60rem;
-  z-index: 2;
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    p {
-      margin: 0.25rem 0;
-    }
-  }
-  a {
-    color: ${colors.textColor};
-  }
-  img {
-    border-radius: 0.25rem;
-    margin: 0 auto;
-    display: block;
-    width: 200px;
-  }
-  .cta {
-    font-size: 0.78rem;
-    a {
-      color: ${colors.primary};
-    }
-  }
-`;
-
-// const FindIpButton = styled.a`
-//   margin: 0.5rem;
-//   cursor: pointer;
-//   display: block;
-//   text-align: center;
-//   color: ${colors.primary};
-//   text-decoration: underline;
-// `;
-
 const ErrorMessage = styled.p`
   color: ${colors.danger};
   margin: 0.5rem;
@@ -165,23 +121,6 @@ const Home = (): JSX.Element => {
     if (!isError) setErrMsg("");
   };
 
-  // const findIpAddress = () => {
-  //   setUserInput('');
-  //   setPlaceholder('Looking up your IP...');
-  //   setInputDisabled(true);
-  //   fetch('https://ipapi.co/json/')
-  //     .then(function(response) {
-  //       response.json().then(jsonData => {
-  //         setUserInput(jsonData.ip);
-  //         setPlaceholder(defaultPlaceholder);
-  //         setInputDisabled(true);
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       console.log('Failed to get IP address :\'(', error)
-  //     });
-  // };
-
   const formSubmitEvent = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submit();
@@ -215,29 +154,6 @@ const Home = (): JSX.Element => {
           Analyze!
         </Button>
       </UserInputMain>
-      <SponsorCard>
-        <Heading as="h2" size="small" color={colors.primary}>
-          Sponsored by
-        </Heading>
-        <div className="inner">
-          <p>
-            <a href="https://terminaltrove.com/?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh">
-              Terminal Trove
-            </a>{" "}
-            - The $HOME of all things in the terminal.
-            <br />
-            <span className="cta">
-              Get updates on the latest CLI/TUI tools via the{" "}
-              <a
-                className="cta"
-                href="https://terminaltrove.com/newsletter?utm_campaign=github&utm_medium=referral&utm_content=web-check&utm_source=wcgh"
-              >
-                Terminal Trove newsletter
-              </a>
-            </span>
-          </p>
-        </div>
-      </SponsorCard>
       <SiteFeaturesWrapper>
         <div className="features">
           <Heading as="h2" size="small" color={colors.primary}>
