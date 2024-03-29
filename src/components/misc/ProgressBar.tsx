@@ -308,7 +308,6 @@ export const calculateLoadingStatePercentages = (
     loading: 0,
     skipped: 0,
     error: 0,
-    skipped: 0,
     "timed-out": 0,
   };
 
