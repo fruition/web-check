@@ -223,36 +223,6 @@ const jobNames = [
   "carbon",
 ] as const;
 
-interface JobListItemProps {
-  job: LoadingJob;
-  showJobDocs: (name: string) => void;
-  showErrorModal: (
-    name: string,
-    state: LoadingState,
-    timeTaken: number | undefined,
-    error: string,
-    isInfo?: boolean
-  ) => void;
-  barColors: Record<LoadingState, [string, string]>;
-}
-
-const getStatusEmoji = (state: LoadingState): string => {
-  switch (state) {
-    case "success":
-      return "✅";
-    case "loading":
-      return "🔄";
-    case "error":
-      return "❌";
-    case "timed-out":
-      return "⏸️";
-    case "skipped":
-      return "⏭️";
-    default:
-      return "❓";
-  }
-};
-
 export const initialJobs = jobNames.map((job: string) => {
   return {
     name: job,
