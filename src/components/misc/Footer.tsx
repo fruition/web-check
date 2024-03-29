@@ -26,23 +26,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Link = styled.a`
-  color: ${colors.primary};
-  font-weight: bold;
-  border-radius: 4px;
-  padding: 0.1rem;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    background: ${colors.primary};
-    color: ${colors.backgroundDarker};
-    text-decoration: none;
-  }
-`;
-
 const Footer = (props: { isFixed?: boolean }): JSX.Element => {
-  const licenseUrl = "https://github.com/lissy93/web-check/blob/master/LICENSE";
-  const authorUrl = "https://aliciasykes.com";
-  const githubUrl = "https://github.com/lissy93/web-check";
   return (
     <StyledFooter style={props.isFixed ? { position: "fixed" } : {}}>
       {/* <span>

@@ -4,7 +4,6 @@ import colors from "styles/colors";
 import Heading from "components/Form/Heading";
 import Footer from "components/misc/Footer";
 import Nav from "components/Form/Nav";
-import Button from "components/Form/Button";
 import AdditionalResources from "components/misc/AdditionalResources";
 import { StyledCard } from "components/Form/Card";
 import docs, {
@@ -28,15 +27,6 @@ section {
   width: auto;
   .inner-heading { display: none; }
 }
-`;
-
-const HeaderLinkContainer = styled.nav`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  a {
-    text-decoration: none;
-  }
 `;
 
 const Section = styled(StyledCard)`

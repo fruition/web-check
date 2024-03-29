@@ -253,42 +253,6 @@ const getStatusEmoji = (state: LoadingState): string => {
   }
 };
 
-const JobListItem: React.FC<JobListItemProps> = ({
-  job,
-  showJobDocs,
-  showErrorModal,
-  barColors,
-}) => {
-  const { name, state, timeTaken, retry, error } = job;
-  const actionButton =
-    retry && state !== "success" && state !== "loading" ? (
-      <FailedJobActionButton onClick={retry}>↻ Retry</FailedJobActionButton>
-    ) : null;
-
-  const showModalButton = error &&
-    ["error", "timed-out", "skipped"].includes(state) && (
-      <FailedJobActionButton
-        onClick={() =>
-          showErrorModal(name, state, timeTaken, error, state === "skipped")
-        }
-      >
-        {state === "timed-out" ? "■ Show Timeout Reason" : "■ Show Error"}
-      </FailedJobActionButton>
-    );
-
-  return (
-    <li key={name}>
-      <b onClick={() => showJobDocs(name)}>
-        {getStatusEmoji(state)} {name}
-      </b>
-      <span style={{ color: barColors[state][0] }}> ({state})</span>.
-      <i>{timeTaken && state !== "loading" ? ` Took ${timeTaken} ms` : ""}</i>
-      {actionButton}
-      {showModalButton}
-    </li>
-  );
-};
-
 export const initialJobs = jobNames.map((job: string) => {
   return {
     name: job,
