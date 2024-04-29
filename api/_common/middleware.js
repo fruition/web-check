@@ -115,16 +115,25 @@ const commonMiddleware = (handler) => {
       console.log("response", handlerResponse, callback);
 
       if (handlerResponse.body && handlerResponse.statusCode) {
-        callback(null, handlerResponse);
+        // callback(null, handlerResponse);
+        return handlerResponse;
       } else {
-        callback(null, {
+        // callback(null, {
+        //   statusCode: 200,
+        //   body:
+        //     typeof handlerResponse === "object"
+        //       ? JSON.stringify(handlerResponse)
+        //       : handlerResponse,
+        //   headers,
+        // });
+        return {
           statusCode: 200,
           body:
             typeof handlerResponse === "object"
               ? JSON.stringify(handlerResponse)
               : handlerResponse,
           headers,
-        });
+        };
       }
     } catch (error) {
       callback(null, {
