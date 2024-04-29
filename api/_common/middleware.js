@@ -90,7 +90,7 @@ const commonMiddleware = (handler) => {
 
   // Netlify
   const netlifyHandler = async (event, context, callback) => {
-    console.log("netlify handler", event, context);
+    console.log("netlify handler");
     const queryParams = event.queryStringParameters || event.query || {};
     const rawUrl = queryParams.url;
 
@@ -111,6 +111,8 @@ const commonMiddleware = (handler) => {
         handler(url, event, context),
         createTimeoutPromise(TIMEOUT),
       ]);
+
+      console.log("response", handlerResponse);
 
       if (handlerResponse.body && handlerResponse.statusCode) {
         callback(null, handlerResponse);
