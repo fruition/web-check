@@ -90,7 +90,7 @@ const commonMiddleware = (handler) => {
 
   // Netlify
   const netlifyHandler = async (event, context, callback) => {
-    console.log("netlify handler");
+    console.log("netlify handler", event, context);
     const queryParams = event.queryStringParameters || event.query || {};
     const rawUrl = queryParams.url;
 
