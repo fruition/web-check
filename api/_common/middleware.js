@@ -112,7 +112,7 @@ const commonMiddleware = (handler) => {
         createTimeoutPromise(TIMEOUT),
       ]);
 
-      console.log("response", handlerResponse);
+      console.log("response", handlerResponse, callback);
 
       if (handlerResponse.body && handlerResponse.statusCode) {
         callback(null, handlerResponse);
