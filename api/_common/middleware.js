@@ -136,6 +136,7 @@ const commonMiddleware = (handler) => {
         };
       }
     } catch (error) {
+      console.error("error", error);
       callback(null, {
         statusCode: 500,
         body: JSON.stringify({ error: error.message }),
