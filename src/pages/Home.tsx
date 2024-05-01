@@ -170,16 +170,16 @@ const Home = (): JSX.Element => {
         </div>
         <div className="links">
           <a
-            href="https://app.netlify.com/start/deploy?repository=https://github.com/lissy93/web-check"
-            title="Deploy your own private or public instance of Web-Check to Netlify"
+            href="https://fruition.net"
+            title="Get help your website from Fruition"
           >
-            <Button>Deploy your own</Button>
+            <Button>Fruition</Button>
           </a>
           <a
-            href="/about#api-documentation"
+            href="https://fruition.net/services/help-desk"
             title="View the API documentation, to use Web-Check programmatically"
           >
-            <Button>API Docs</Button>
+            <Button>Website Support</Button>
           </a>
         </div>
       </SiteFeaturesWrapper>
