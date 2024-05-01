@@ -607,15 +607,6 @@ const Results = (): JSX.Element => {
       fetch(`${api}/sitemap?url=${address}`).then((res) => parseJson(res)),
   });
 
-  // Fetch carbon footprint data for a given site
-  const [carbonResults, updateCarbonResults] = useMotherHook({
-    jobId: "carbon",
-    updateLoadingJobs,
-    addressInfo: { address, addressType, expectedAddressTypes: urlTypeOnly },
-    fetchRequest: () =>
-      fetch(`${api}/carbon?url=${address}`).then((res) => parseJson(res)),
-  });
-
   // Get site features from BuiltWith
   const [siteFeaturesResults, updateSiteFeaturesResults] = useMotherHook({
     jobId: "features",
@@ -948,14 +939,6 @@ const Results = (): JSX.Element => {
       result: sitemapResults,
       Component: SitemapCard,
       refresh: updateSitemapResults,
-      tags: ["meta"],
-    },
-    {
-      id: "carbon",
-      title: "Carbon Footprint",
-      result: carbonResults,
-      Component: CarbonFootprintCard,
-      refresh: updateCarbonResults,
       tags: ["meta"],
     },
   ];
