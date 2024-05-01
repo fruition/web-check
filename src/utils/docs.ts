@@ -515,6 +515,9 @@ const docs: Doc[] = [
   },
 ];
 
+export const featureIntro = [
+  'When conducting an OSINT investigation on a given website or host, there are several key areas to look at. Each of these are documented below, along with links to the tools and techniques you can use to gather the relevant information.',
+  'Web-Check can automate the process of gathering this data, but it will be up to you to interpret the results and draw conclusions.',
 export const troubleshootingIntro = [
   'When troubleshooting a website or host during an OSINT investigation, it is important to examine specific areas for potential issues. The following documentation provides insights into these areas and includes links to tools and techniques that can help you gather relevant information.',
   'While Web-Check can automate the data gathering process, it is crucial for you to interpret the results and draw conclusions based on your troubleshooting efforts.',

@@ -8,6 +8,7 @@ import AdditionalResources from "components/misc/AdditionalResources";
 import { StyledCard } from "components/Form/Card";
 import docs, {
   about,
+  featureIntro,
   license,
   fairUse,
   supportUs,
