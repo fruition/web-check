@@ -257,7 +257,14 @@ const About = (): JSX.Element => {
           Additional Resources
         </Heading>
         <AdditionalResources />
-
+        <Heading as="h2" size="medium" color={colors.primary}>
+          Support Us
+        </Heading>
+        <Section>
+          {supportUs.map((para, index: number) => (
+            <p dangerouslySetInnerHTML={{ __html: para }} />
+          ))}
+        </Section>
         <Heading as="h2" size="medium" color={colors.primary}>
           Terms & Info
         </Heading>
