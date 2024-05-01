@@ -607,15 +607,15 @@ const Results = (): JSX.Element => {
       fetch(`${api}/sitemap?url=${address}`).then((res) => parseJson(res)),
   });
 
-  // Fetch carbon footprint data for a given site
-  const [carbonResults, updateCarbonResults] = useMotherHook({
-    jobId: "carbon",
-    updateLoadingJobs,
-    addressInfo: { address, addressType, expectedAddressTypes: urlTypeOnly },
-    fetchRequest: () =>
-      fetch(`${api}/carbon?url=${address}`).then((res) => parseJson(res)),
-  });
-
+    // Fetch carbon footprint data for a given site
+    const [carbonResults, updateCarbonResults] = useMotherHook({
+      jobId: "carbon",
+      updateLoadingJobs,
+      addressInfo: { address, addressType, expectedAddressTypes: urlTypeOnly },
+      fetchRequest: () =>
+        fetch(`${api}/carbon?url=${address}`).then((res) => parseJson(res)),
+    });
+  
   // Get site features from BuiltWith
   const [siteFeaturesResults, updateSiteFeaturesResults] = useMotherHook({
     jobId: "features",

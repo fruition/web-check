@@ -515,23 +515,25 @@ const docs: Doc[] = [
   },
 ];
 
+
 export const featureIntro = [
   'When conducting an OSINT investigation on a given website or host, there are several key areas to look at. Each of these are documented below, along with links to the tools and techniques you can use to gather the relevant information.',
   'Web-Check can automate the process of gathering this data, but it will be up to you to interpret the results and draw conclusions.',
 ];
 
+export const troubleshootingIntro = 'When troubleshooting a website or host during an OSINT investigation, it is important to examine specific areas for potential issues. The following documentation provides insights into these areas and includes links to tools and techniques that can help you gather relevant information.\nWhile Web-Check can automate the data gathering process, it is crucial for you to interpret the results and draw conclusions based on your troubleshooting efforts.';
+
 export const about = [
-`Web-Check is a powerful all-in-one tool for discovering information about a website/host.
-The core philosophy is simple: feed Web-Check a URL and let it gather, collate, and present a broad array of open data for you to delve into.`,
+`Fruition utilizes open source technologies in its support of our clients. This is one tool that Fruition's Help Desk team utilizes to troubleshoot issues ranging from DNS to mail delivery. 
+The core philosophy is simple: feed check.fruition.net a URL and let it gather, collate, and present a broad array of open data to help you identify and resolve issues.`,
 
-`The report shines a spotlight onto potential attack vectors, existing security measures,
-and the web of connections within a site's architecture.
-The results can also help optimizing server responses, configuring redirects,
-managing cookies, or fine-tuning DNS records for your site.`,
+`The report provides insights into potential problems, security vulnerabilities,
+and the overall architecture of a website.
+The results can help you optimize server responses, configure redirects,
+manage cookies, or fine-tune DNS records for your site.`,
 
-`So, whether you're a developer, system administrator, security researcher, penetration
-tester or are just interested in discovering the underlying technologies of a given site 
-- I'm sure you'll find this a useful addition to your toolbox.`,
+`Whether you're a developer, system administrator, or website owner,
+check.fruition.net is a valuable addition to your troubleshooting toolbox.`,
 ];
 
 export const license = `The MIT License (MIT)

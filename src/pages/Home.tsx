@@ -84,7 +84,7 @@ const SiteFeaturesWrapper = styled(StyledCard)`
 `;
 
 const Home = (): JSX.Element => {
-  const defaultPlaceholder = "e.g. https://duck.com/";
+  const defaultPlaceholder = "e.g. https://frugpt.com/";
   const [userInput, setUserInput] = useState("");
   const [errorMsg, setErrMsg] = useState("");
   const [placeholder] = useState(defaultPlaceholder);
@@ -131,7 +131,7 @@ const Home = (): JSX.Element => {
       <FancyBackground />
       <UserInputMain onSubmit={formSubmitEvent}>
         <Heading as="h1" size="xLarge" align="center" color={colors.primary}>
-          <img width="64" src="/web-check.png" alt="Web Check Icon" />
+          <img width="64" src="/web-check.png" alt="Fruition website troubleshooter" />
           Web Check
         </Heading>
         <Input
@@ -170,16 +170,16 @@ const Home = (): JSX.Element => {
         </div>
         <div className="links">
           <a
-            href="https://app.netlify.com/start/deploy?repository=https://github.com/lissy93/web-check"
-            title="Deploy your own private or public instance of Web-Check to Netlify"
+            href="https://fruition.net"
+            title="Get help with your website from Fruition"
           >
-            <Button>Deploy your own</Button>
+            <Button>Fruition</Button>
           </a>
           <a
-            href="/about#api-documentation"
+            href="https://fruition.net/services/help-desk"
             title="View the API documentation, to use Web-Check programmatically"
           >
-            <Button>API Docs</Button>
+            <Button>Website Support</Button>
           </a>
         </div>
       </SiteFeaturesWrapper>
