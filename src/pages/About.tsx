@@ -289,10 +289,6 @@ const About = (): JSX.Element => {
             ))}
           </ul>
           <hr />
-      
-         
-      
-          </p>
         </Section>
       </AboutContainer>
       <Footer />
