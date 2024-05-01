@@ -84,7 +84,7 @@ const SiteFeaturesWrapper = styled(StyledCard)`
 `;
 
 const Home = (): JSX.Element => {
-  const defaultPlaceholder = "e.g. https://duck.com/";
+  const defaultPlaceholder = "e.g. https://frugpt.com/";
   const [userInput, setUserInput] = useState("");
   const [errorMsg, setErrMsg] = useState("");
   const [placeholder] = useState(defaultPlaceholder);
@@ -131,7 +131,7 @@ const Home = (): JSX.Element => {
       <FancyBackground />
       <UserInputMain onSubmit={formSubmitEvent}>
         <Heading as="h1" size="xLarge" align="center" color={colors.primary}>
-          <img width="64" src="/web-check.png" alt="Web Check Icon" />
+          <img width="64" src="/web-check.png" alt="Fruition website troubleshooter" />
           Web Check
         </Heading>
         <Input
@@ -171,7 +171,7 @@ const Home = (): JSX.Element => {
         <div className="links">
           <a
             href="https://fruition.net"
-            title="Get help your website from Fruition"
+            title="Get help with your website from Fruition"
           >
             <Button>Fruition</Button>
           </a>
